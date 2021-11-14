@@ -371,6 +371,116 @@ public class AdminApiTest extends AcceptanceTestBase {
     }
 
     @Test
+    public void createAndRetrieveStubMappingWithNullID() {
+        WireMockResponse response = testClient.postJson("/__admin/mappings",
+                "{                                    \n" +
+                        "      \"id\": null,                \n" +
+                        "      \"uuid\": \"27d7818b-4df6-4630-a6ab-c50e87e384e1\",         \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}"
+        );
+        assertThat(response.statusCode(), is(201));
+        String mappings = testClient.get("/__admin/mappings").content();
+        System.out.println(" mappings " + mappings);
+        assertThat(testClient.postJson("/sop/PUBSES",
+                "{                                    \n" +
+                        "      \"id\": null,                \n" +
+                        "      \"uuid\": \"27d7818b-4df6-4630-a6ab-c50e87e384e1\",         \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}").statusCode(), is(200));
+    }
+
+    @Test
+    public void createAndRetrieveStubMappingWithNullUUID() {
+        WireMockResponse response = testClient.postJson("/__admin/mappings",
+                "{                                    \n" +
+                        "      \"id\": \"27d7818b-4df6-4630-a6ab-c50e87e384e1\", \n" +
+                        "      \"uuid\": null,              \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}"
+        );
+        assertThat(response.statusCode(), is(201));
+        String mappings = testClient.get("/__admin/mappings").content();
+        System.out.println(" mappings " + mappings);
+        assertThat(testClient.postJson("/sop/PUBSES",
+                "{                                    \n" +
+                        "      \"id\": \"27d7818b-4df6-4630-a6ab-c50e87e384e1\", \n" +
+                        "      \"uuid\": null,              \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}").statusCode(), is(200));
+    }
+
+    @Test
+    public void createAndRetrieveStubMappingWithNullIDAndUUID() {
+        WireMockResponse response = testClient.postJson("/__admin/mappings",
+                "{                                    \n" +
+                        "      \"id\": null,                \n" +
+                        "      \"uuid\": null,              \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}"
+        );
+        assertThat(response.statusCode(), is(201));
+        String mappings = testClient.get("/__admin/mappings").content();
+        System.out.println(" mappings " + mappings);
+        assertThat(testClient.postJson("/sop/PUBSES",
+                "{                                    \n" +
+                        "      \"id\": null,                \n" +
+                        "      \"uuid\": null,              \n" +
+                        "      \"name\": \"id1-name\",      \n" +
+                        "      \"request\": {               \n" +
+                        "        \"method\": \"POST\",      \n" +
+                        "        \"url\": \"/sop/PUBSES\"   \n" +
+                        "      },                           \n" +
+                        "      \"response\": {              \n" +
+                        "        \"body\": \"hello world\", \n" +
+                        "        \"status\": 200            \n" +
+                        "      }                            \n" +
+                        "}").statusCode(), is(200));
+    }
+
+
+
+    @Test
     public void resetStubMappingsViaDELETE() {
         dsl.stubFor(get(urlEqualTo("/reset-this")).willReturn(aResponse().withStatus(200)));
         dsl.stubFor(get(urlEqualTo("/reset-this/too")).willReturn(aResponse().withStatus(200)));
