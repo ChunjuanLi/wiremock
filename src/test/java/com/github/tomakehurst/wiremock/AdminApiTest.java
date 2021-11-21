@@ -370,6 +370,10 @@ public class AdminApiTest extends AcceptanceTestBase {
         JsonAssertion.assertThat(body).field("name").isEqualTo("Teapot putter");
     }
 
+    /**
+     *  Create stub mapping with null ID
+     *  Validate wiremock returns the created stub mapping in response.
+     */
     @Test
     public void createAndRetrieveStubMappingWithNullID() {
         WireMockResponse response = testClient.postJson("/__admin/mappings",
@@ -406,6 +410,10 @@ public class AdminApiTest extends AcceptanceTestBase {
                         "}").statusCode(), is(200));
     }
 
+    /**
+     *  Create stub mapping with null UUID
+     *  Validate wiremock returns the created stub mapping in response.
+     */
     @Test
     public void createAndRetrieveStubMappingWithNullUUID() {
         WireMockResponse response = testClient.postJson("/__admin/mappings",
@@ -442,6 +450,10 @@ public class AdminApiTest extends AcceptanceTestBase {
                         "}").statusCode(), is(200));
     }
 
+    /**
+     *  Create stub mapping with Null ID and UUID
+     *  Validate wiremock returns the created stub mapping in response.
+     */
     @Test
     public void createAndRetrieveStubMappingWithNullIDAndUUID() {
         WireMockResponse response = testClient.postJson("/__admin/mappings",
