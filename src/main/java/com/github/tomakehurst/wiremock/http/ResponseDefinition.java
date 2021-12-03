@@ -124,6 +124,7 @@ public class ResponseDefinition {
         this.fixedDelayMilliseconds = fixedDelayMilliseconds;
         this.delayDistribution = delayDistribution;
         this.chunkedDribbleDelay = chunkedDribbleDelay;
+        //CS427 Issue link: https://github.com/wiremock/wiremock/issues/1012
         this.proxyBaseUrl = proxyBaseUrl == null ? null : proxyBaseUrl.trim();
         this.proxyUrlPrefixToRemove = proxyUrlPrefixToRemove;
         this.fault = fault;
