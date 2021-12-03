@@ -51,7 +51,11 @@ public class ResponseDefinitionTest {
 
         assertThat(response.getProxyUrl(), equalTo("http://my.proxy.url"));
     }
-
+    
+    /**
+     * CS427 Issue link: https://github.com/wiremock/wiremock/issues/1012
+     * Giving back the ProxyUrl When ProxiedUrl begin With Whitespace
+     */
     @Test
     public void getProxyUrlGivesBackTheProxyUrlWhenProxiedUrlBeginWithWhiteSpace() {
         ResponseDefinition response = ResponseDefinitionBuilder.responseDefinition()
@@ -63,6 +67,10 @@ public class ResponseDefinitionTest {
         assertThat(response.getProxyUrl(), equalTo("http://my.proxy.url/path"));
     }
 
+    /**
+     * CS427 Issue link: https://github.com/wiremock/wiremock/issues/1012
+     * Giving back the ProxyUrl When ProxiedUrl end With Whitespace
+     */
     @Test
     public void getProxyUrlGivesBackTheProxyUrlWhenProxiedUrlEndWithWhiteSpace() {
         ResponseDefinition response = ResponseDefinitionBuilder.responseDefinition()
@@ -75,6 +83,10 @@ public class ResponseDefinitionTest {
 
     }
 
+    /**
+     * CS427 Issue link: https://github.com/wiremock/wiremock/issues/1012
+     * Giving back the ProxyUrl When ProxiedUrl is null
+     */
     @Test
     public void getProxyUrlGivesBackTheProxyUrlWhenProxiedFromUrlNull() {
         ResponseDefinition response = ResponseDefinitionBuilder.responseDefinition()
