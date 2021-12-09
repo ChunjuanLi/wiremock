@@ -370,8 +370,8 @@ public class AdminApiTest extends AcceptanceTestBase {
         JsonAssertion.assertThat(body).field("name").isEqualTo("Teapot putter");
     }
 
+    // CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
     /**
-     *  CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
      *  Create stub mapping with null ID
      *  Validate wiremock returns the created stub mapping in response.
      */
@@ -411,8 +411,8 @@ public class AdminApiTest extends AcceptanceTestBase {
                         "}").statusCode(), is(200));
     }
 
+    // CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
     /**
-     * CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
      *  Create stub mapping with null UUID
      *  Validate wiremock returns the created stub mapping in response.
      */
@@ -452,8 +452,8 @@ public class AdminApiTest extends AcceptanceTestBase {
                         "}").statusCode(), is(200));
     }
 
+    // CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
     /**
-     * CS427 Issue link: https://github.com/wiremock/wiremock/issues/1164
      *  Create stub mapping with Null ID and UUID
      *  Validate wiremock returns the created stub mapping in response.
      */
